@@ -7,7 +7,8 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 #WORKDIR /src
-WORKDIR /app
+WORKDIR /project
+
 COPY ["KubernetesTest/KubernetesTest.csproj", "KubernetesTest/"]
 RUN dotnet restore "KubernetesTest/KubernetesTest.csproj"
 COPY . .
