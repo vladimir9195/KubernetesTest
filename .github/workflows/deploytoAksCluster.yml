@@ -37,15 +37,15 @@ jobs:
     
     - name: Create namespace
       run: |
-        namespacePresent=`kubectl get namespace | grep edh_deadletterci9b2b | wc -l`
+        namespacePresent=`kubectl get namespace | grep edhdeadletterci9b2b | wc -l`
         if [ $namespacePresent -eq 0 ]
         then
-            echo `kubectl create namespace edh_deadletterci9b2b`
+            echo `kubectl create namespace edhdeadletterci9b2b`
         fi
 
     - uses: azure/k8s-create-secret@v1
       with:
-        namespace: edh_deadletterci9b2b
+        namespace: edhdeadletterci9b2b
         container-registry-url: edhdeadlettercitest.azurecr.io
         container-registry-username: ${{ steps.create-acr.outputs.acr_username }}
         container-registry-password: ${{ steps.create-acr.outputs.acr_password }}
@@ -53,7 +53,7 @@ jobs:
        
     - uses: azure/k8s-deploy@v1.2
       with:
-        namespace: edh_deadletterci9b2b
+        namespace: edhdeadletterci9b2b
         manifests: |
           manifests/deployment.yml
           manifests/service.yml
