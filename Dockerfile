@@ -9,14 +9,14 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 #WORKDIR /
 
-COPY *.csproj ./
-#COPY ["KubernetesTest/KubernetesTest.csproj", "KubernetesTest/"]
-#RUN dotnet restore "KubernetesTest/KubernetesTest.csproj"
+#COPY *.csproj ./
+COPY ["KubernetesTest/KubernetesTest.csproj", "KubernetesTest/"]
+RUN dotnet restore "KubernetesTest/KubernetesTest.csproj"
 
-RUN dotnet restore
+#RUN dotnet restore
 
 COPY . .
-WORKDIR "/src/KubernetesTest"
+WORKDIR "/src/KubernetesTest/"
 RUN dotnet build "KubernetesTest.csproj" -c Release -o /app/build
 
 FROM build AS publish
