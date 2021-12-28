@@ -12,7 +12,7 @@ RUN echo "Hello World!!"
 RUN echo WORKDIR
 COPY . .
 #COPY ["KubernetesTest/KubernetesTest.csproj", "KubernetesTest/"]
-RUN dotnet restore "KubernetesTest/KubernetesTest.csproj"
+RUN dotnet restore ". KubernetesTest/KubernetesTest.csproj"
 COPY . .
 WORKDIR "/src/KubernetesTest"
 RUN dotnet build "KubernetesTest.csproj" -c Release -o /app/build
