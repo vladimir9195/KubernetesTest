@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: "edhdeadletterci-4fc0"
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: "edhdeadletterci-4fc0"
+  template:
+    metadata:
+      labels:
+        app: "edhdeadletterci-4fc0"
+    spec:
+      containers:
+        - name: "edhdeadletterci-4fc0"
+          image: "edhdeadlettercitest.azurecr.io/edhdeadletterci"
+          ports:
+          - containerPort: 80
