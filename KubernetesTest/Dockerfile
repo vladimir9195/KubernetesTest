@@ -8,11 +8,13 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 #WORKDIR /
-RUN echo "Hello World!!"
-#RUN echo WORKDIR
+
 COPY *.csproj ./
 #COPY ["KubernetesTest/KubernetesTest.csproj", "KubernetesTest/"]
-RUN dotnet restore "KubernetesTest/KubernetesTest.csproj"
+#RUN dotnet restore "KubernetesTest/KubernetesTest.csproj"
+
+RUN dotnet restore
+
 COPY . .
 WORKDIR "/src/KubernetesTest"
 RUN dotnet build "KubernetesTest.csproj" -c Release -o /app/build
