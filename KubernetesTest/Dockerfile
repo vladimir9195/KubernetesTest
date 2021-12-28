@@ -10,8 +10,8 @@ WORKDIR /src
 #WORKDIR /
 RUN echo "Hello World!!"
 #RUN echo WORKDIR
-#COPY . .
-COPY ["KubernetesTest/KubernetesTest.csproj", "KubernetesTest/"]
+COPY *.csproj ./
+#COPY ["KubernetesTest/KubernetesTest.csproj", "KubernetesTest/"]
 RUN dotnet restore "KubernetesTest/KubernetesTest.csproj"
 COPY . .
 WORKDIR "/src/KubernetesTest"
