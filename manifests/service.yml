@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+    name: "edhdeadletterci-4fc0"
+    labels:
+        app: "edhdeadletterci-4fc0"
+spec:
+    type: LoadBalancer
+    ports:
+    - port: 80
+      targetPort: 80
+      protocol: TCP
+      name: http
+    selector:
+        app: "edhdeadletterci-4fc0"
